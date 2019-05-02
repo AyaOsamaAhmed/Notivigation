@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 //https://developer.android.com/training/notify-user/build-notification
+//https://ocr.space/ocrapi
+//https://a9t9.com/kantu/docs/visual-ui-testing?ref=ocrspace
 public class MainActivity extends AppCompatActivity {
 
     private static final String CHANNEL_ID = "1";

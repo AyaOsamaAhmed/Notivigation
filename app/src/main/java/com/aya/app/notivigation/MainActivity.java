@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private         Uri  videoUri = null ;
     private String [] videoList ;
     private Uri [] videoListUri ;
-    private int numVideos = 1 ;
+    private int numVideos ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,11 +93,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void playVideo(View view) {
         Intent  playvideo = new Intent(this , VideoPlayerActivity.class);
-        playvideo.putExtra("videouri",videoUri.toString());
+        String [] video = getVideoList();
+        playvideo.putExtra("videouri",videoUri+"");
         startActivity(playvideo);
 
     }
 
+
+    private String [] getVideoList () {
+        String [] video = new String[5];
+        SharedPreferences sh_video = getSharedPreferences("videoList", MODE_PRIVATE);
+        int len = sh_video.getAll().size();
+
+        for(int i = 1 ; i< len ; i++) {
+            String   videoShared = "videoUri" + i ;
+            video [i] =  sh_video.getString(videoShared,"");
+        }
+        return video;
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -109,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
             recordNumber(numVideos);
 
             // Video List
-            SharedPreferences sh2 = getSharedPreferences("videoList", MODE_PRIVATE);
-            SharedPreferences.Editor edit_video = sh2.edit();
+            SharedPreferences sh = getSharedPreferences("videoList", MODE_PRIVATE);
+            SharedPreferences.Editor edit_video = sh.edit();
             String   videoShared = "videoUri" + numVideos ;
             edit_video.putString( videoShared , videoUri.toString() );
             edit_video.apply();
@@ -137,15 +150,14 @@ public class MainActivity extends AppCompatActivity {
 
     return len-1 ;
     }
+
     public void playVideoList(View view) {
 
-        videoList = new String[5];
-        Toast.makeText(this,""+(numVideos-1),Toast.LENGTH_LONG).show();
+
+        Toast.makeText(this,""+getNumber(),Toast.LENGTH_LONG).show();
 
         Intent  playvideo = new Intent(this , VideoPlayerList.class);
-        playvideo.putExtra("num",(numVideos-1)+"");
-        playvideo.putExtra("videourilist",videoList);
-        startActivity(playvideo);
+          startActivity(playvideo);
 
 
     }

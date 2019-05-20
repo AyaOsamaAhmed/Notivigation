@@ -10,35 +10,17 @@
     android:layout_marginTop="55dp"
     >
     <VideoView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:layout_margin="4dp"
         android:id="@+id/videoview1"
         />
     <VideoView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:layout_margin="4dp"
         android:id="@+id/videoview2"
         />
 </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/row1"
-        >
-        <VideoView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_margin="4dp"
-            android:id="@+id/videoview3"
-            />
-        <VideoView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_margin="4dp"
-            android:id="@+id/videoview4"
-            />
-    </LinearLayout>
-</RelativeLayout>
+   </RelativeLayout>
